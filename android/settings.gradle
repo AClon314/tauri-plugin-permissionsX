@@ -3,6 +3,14 @@ project(':tauri-android').projectDir = new File('./.tauri/tauri-api')
 dependencyResolutionManagement {
     repositories {
         // JitPack 远程仓库：https://jitpack.io
+        google()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
+    }
+}
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
     }
 }
