@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.library")
+    id("com.android.library") version "8.1.1"
     id("org.jetbrains.kotlin.android")
 }
 
@@ -43,4 +43,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation(project(":tauri-android"))
     implementation("com.github.getActivity:XXPermissions:18.63")
+}
+
+repositories {
+    google()
 }
