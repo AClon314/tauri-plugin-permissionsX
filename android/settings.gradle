@@ -1,16 +1,17 @@
-include ':tauri-android'
-project(':tauri-android').projectDir = new File('./.tauri/tauri-api')
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        google()
+    }
+}
 dependencyResolutionManagement {
     repositories {
         // JitPack 远程仓库：https://jitpack.io
-        google()
         mavenCentral()
+        google()
         maven { url 'https://jitpack.io' }
     }
 }
-pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
-}
+include ':tauri-android'
+project(':tauri-android').projectDir = new File('./.tauri/tauri-api')
