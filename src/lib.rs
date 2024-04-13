@@ -42,10 +42,10 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
   Builder::new("permissions")
     .invoke_handler(tauri::generate_handler![commands::execute])
     .setup(|app, api| {
+      #[cfg(target_os = "android")]
+      let handle = api.register_android_plugin("com.plugin.permissions", "ExamplePlugin")?;
       #[cfg(mobile)]
       let permissions = mobile::init(app, api)?;
-      #[cfg(target_os = "android")]
-      let handle = api.register_android_plugin("com.plugin.permissions", "PermissionsPlugin")?;
       #[cfg(desktop)]
       let permissions = desktop::init(app, api)?;
       app.manage(permissions);

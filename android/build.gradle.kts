@@ -1,6 +1,7 @@
+// ignore the error: The supplied phased action failed with an exception.
 plugins {
-    id("com.android.library") version "8.1.1"
-    id("org.jetbrains.kotlin.android") version "1.9.10"
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -42,7 +43,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation(project(":tauri-android"))
-    implementation("com.github.getActivity:XXPermissions:18.63")
+    // implementation("com.github.getActivity:XXPermissions:18.63")
 }
 
 repositories {
