@@ -1,2 +1,8 @@
 include ':tauri-android'
 project(':tauri-android').projectDir = new File('./.tauri/tauri-api')
+dependencyResolutionManagement {
+    repositories {
+        // JitPack 远程仓库：https://jitpack.io
+        maven { url 'https://jitpack.io' }
+    }
+}
