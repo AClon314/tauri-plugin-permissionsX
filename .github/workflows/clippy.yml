@@ -50,8 +50,4 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y webkit2gtk-4.1
       - uses: Swatinem/rust-cache@v2
-      - name: Run clippy
-        run: |
-          env:
-            RUSTFLAGS: -D warnings
-          cargo clippy --all-targets --all-features
+      - run: cargo clippy --all-targets --all-features -- -D warnings
