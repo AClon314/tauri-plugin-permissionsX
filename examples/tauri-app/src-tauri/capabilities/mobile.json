@@ -1,0 +1,26 @@
+{
+    "$schema": "../gen/schemas/mobile-schema.json",
+    "identifier": "mobile-capability",
+    "windows": [
+        "main"
+    ],
+    "platforms": [
+        "iOS",
+        "android"
+    ],
+    "permissions": [
+        "path:default",
+        "path:allow-resolve-directory",
+        "event:default",
+        "event:allow-listen",
+        "app:default",
+        "resources:default",
+        "menu:default",
+        "tray:default",
+        "image:default",
+        "webview:allow-internal-toggle-devtools",
+        "webview:default",
+        "window:default",
+        "permissions:allow-test"
+    ]
+}

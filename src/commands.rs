@@ -11,3 +11,12 @@ pub(crate) async fn execute<R: Runtime>(
   state.0.lock().unwrap().insert("key".into(), "value".into());
   Ok("success".to_string())
 }
+
+#[command]
+pub(crate) async fn test<R: Runtime>(
+  _app: AppHandle<R>,
+  _window: Window<R>,
+  msg: String
+) -> Result<String> {
+  Ok(msg)
+}

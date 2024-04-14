@@ -40,7 +40,7 @@ impl<R: Runtime, T: Manager<R>> crate::PermissionsExt<R> for T {
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
   Builder::new("permissions")
-    .invoke_handler(tauri::generate_handler![commands::execute])
+    .invoke_handler(tauri::generate_handler![commands::test])
     .setup(|app, api| {
       #[cfg(mobile)]
       let permissions = mobile::init(app, api)?;

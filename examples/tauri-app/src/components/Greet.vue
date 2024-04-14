@@ -8,7 +8,8 @@ const name = ref("");
 async function greet() {
   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
   greetMsg.value = await invoke("greet", { name: name.value });
-  console.log(await invoke("ping",{payload: "localhost"}));
+  console.log(await invoke.length);
+  console.log(await invoke('plugin:permissions|test',{msg: "yep"}));
 }
 </script>
 

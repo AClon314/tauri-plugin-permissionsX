@@ -321,6 +321,34 @@
           "enum": [
             "deny-ping"
           ]
+        },
+        {
+          "description": "allow-test -> Enables the test command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-test"
+          ]
+        },
+        {
+          "description": "deny-test -> Denies the test command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-test"
+          ]
+        },
+        {
+          "description": "allow-tester -> Enables the tester command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-tester"
+          ]
+        },
+        {
+          "description": "deny-tester -> Denies the tester command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-tester"
+          ]
         }
       ]
     }
