@@ -10,10 +10,10 @@ buildscript {
 }
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+    // repositories {
+    //     google()
+    //     mavenCentral()
+    // }
 }
 
 tasks.register("clean").configure {

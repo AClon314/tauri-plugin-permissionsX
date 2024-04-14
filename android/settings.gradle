@@ -1,15 +1,14 @@
 pluginManagement {
     repositories {
+        google()
         mavenCentral()
         gradlePluginPortal()
-        google()
     }
 }
 dependencyResolutionManagement {
     repositories {
-        // JitPack 远程仓库：https://jitpack.io
-        mavenCentral()
         google()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
 }
