@@ -7,7 +7,7 @@ use tauri::{
 use crate::models::*;
 
 #[cfg(target_os = "android")]
-const PLUGIN_IDENTIFIER: &str = "";
+const PLUGIN_IDENTIFIER: &str = "com.plugin.permissions";
 
 #[cfg(target_os = "ios")]
 tauri::ios_plugin_binding!(init_plugin_permissions);
