@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.plugin.permissions"
+    namespace = "com.plugin.permissionsx"
     compileSdk = 32
 
     defaultConfig {

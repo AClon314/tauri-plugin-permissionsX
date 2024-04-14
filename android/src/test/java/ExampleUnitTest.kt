@@ -1,4 +1,4 @@
-package com.plugin.permissions
+package com.plugin.permissionsx
 
 import org.junit.Test
 

@@ -21,6 +21,6 @@
         "webview:allow-internal-toggle-devtools",
         "webview:default",
         "window:default",
-        "permissions:allow-test"
+        "permissionsx:allow-test"
     ]
 }

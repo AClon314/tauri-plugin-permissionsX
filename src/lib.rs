@@ -19,34 +19,34 @@ mod models;
 pub use error::{Error, Result};
 
 #[cfg(desktop)]
-use desktop::Permissions;
+use desktop::PermissionsX;
 #[cfg(mobile)]
-use mobile::Permissions;
+use mobile::PermissionsX;
 
 #[derive(Default)]
 struct MyState(Mutex<HashMap<String, String>>);
 
 /// Extensions to [`tauri::App`], [`tauri::AppHandle`] and [`tauri::Window`] to access the permissions APIs.
-pub trait PermissionsExt<R: Runtime> {
-  fn permissions(&self) -> &Permissions<R>;
+pub trait PermissionsXExt<R: Runtime> {
+  fn permissionsx(&self) -> &PermissionsX<R>;
 }
 
-impl<R: Runtime, T: Manager<R>> crate::PermissionsExt<R> for T {
-  fn permissions(&self) -> &Permissions<R> {
-    self.state::<Permissions<R>>().inner()
+impl<R: Runtime, T: Manager<R>> crate::PermissionsXExt<R> for T {
+  fn permissionsx(&self) -> &PermissionsX<R> {
+    self.state::<PermissionsX<R>>().inner()
   }
 }
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
-  Builder::new("permissions")
+  Builder::new("permissionsx")
     .invoke_handler(tauri::generate_handler![commands::test])
     .setup(|app, api| {
       #[cfg(mobile)]
-      let permissions = mobile::init(app, api)?;
+      let permissionsx = mobile::init(app, api)?;
       #[cfg(desktop)]
-      let permissions = desktop::init(app, api)?;
-      app.manage(permissions);
+      let permissionsx = desktop::init(app, api)?;
+      app.manage(permissionsx);
 
       // manage state so it is accessible by the commands
       app.manage(MyState::default());

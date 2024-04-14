@@ -6,14 +6,14 @@ use crate::models::*;
 pub fn init<R: Runtime, C: DeserializeOwned>(
   app: &AppHandle<R>,
   _api: PluginApi<R, C>,
-) -> crate::Result<Permissions<R>> {
-  Ok(Permissions(app.clone()))
+) -> crate::Result<PermissionsX<R>> {
+  Ok(PermissionsX(app.clone()))
 }
 
-/// Access to the permissions APIs.
-pub struct Permissions<R: Runtime>(AppHandle<R>);
+/// Access to the PermissionsX APIs.
+pub struct PermissionsX<R: Runtime>(AppHandle<R>);
 
-impl<R: Runtime> Permissions<R> {
+impl<R: Runtime> PermissionsX<R> {
   pub fn ping(&self, payload: PingRequest) -> crate::Result<PingResponse> {
     Ok(PingResponse {
       value: payload.value,

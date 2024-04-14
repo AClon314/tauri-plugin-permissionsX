@@ -1,4 +1,4 @@
-# Tauri Plugin permissions
+# Tauri Plugin permissionsX
 
 TODO:
 - [x] examples use ../../.. plugin normally
