@@ -1,7 +1,10 @@
-// ignore the error: The supplied phased action failed with an exception.
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    // if edit kt file:
+    id("com.android.library") version "8.1.1" apply true
+    id("org.jetbrains.kotlin.android") version "1.9.10" apply true
+    // else if tauri dev:
+    // id("com.android.library")
+    // id("org.jetbrains.kotlin.android")
 }
 
 android {
