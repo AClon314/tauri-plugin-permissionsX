@@ -1,8 +1,8 @@
 {
   "name": "tauri-plugin-permissionsx-api",
-  "version": "0.0.0",
-  "author": "You",
-  "description": "",
+  "version": "0.1.0",
+  "author": "AClon",
+  "description": "persist notification, use XXpermissions for applying",
   "type": "module",
   "types": "./dist-js/index.d.ts",
   "main": "./dist-js/index.cjs",
