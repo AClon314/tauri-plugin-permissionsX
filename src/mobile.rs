@@ -34,12 +34,12 @@ impl<R: Runtime> PermissionsX<R> {
             .map_err(Into::into)
     }
     // added command: startPersistentNotify
-    pub fn start_persistent_notify(&self, payload: PersistNotifyRequest) -> crate::Result<String> {
+    pub fn startPersistentNotify(&self, payload: PersistNotifyRequest) -> crate::Result<String> {
         self.0
             .run_mobile_plugin("startPersistentNotify", payload)
             .map_err(Into::into)
     }
-    pub fn stop_persistent_notify(&self) -> crate::Result<String> {
+    pub fn stopPersistentNotify(&self) -> crate::Result<String> {
         self.0
             .run_mobile_plugin("stopPersistentNotify",())
             .map_err(Into::into)

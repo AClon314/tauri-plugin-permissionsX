@@ -21,7 +21,7 @@ class MyForegroundService : Service() {
       notifyTitle: String? = "MyForegroundService's notifyTitle",
       notifyContent: String? = "常驻通知以保证后台运行"
   ) {
-    Log.d(TAG, "startService")
+    Log.d(TAG, "startService $notifyTitle $notifyContent")
     val notificationIntent = Intent(this, MyForegroundService::class.java)
     Log.d(TAG, "notificationIntent: $notificationIntent")
     val pendingIntent =
