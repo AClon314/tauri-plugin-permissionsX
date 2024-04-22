@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "node esbuild.config.js && pnpm build:types",
-    "build:types": "tsc --declaration --outDir dist-js",
+    "build:types": "tsc",
     "prepublishOnly": "pnpm build",
     "pretest": "pnpm build"
   },
