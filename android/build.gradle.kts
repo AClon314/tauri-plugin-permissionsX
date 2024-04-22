@@ -46,7 +46,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation(project(":tauri-android"))
 
-    implementation("com.github.getActivity:XXPermissions:18.63")
+    // implementation("com.github.getActivity:XXPermissions:18.63")
 
     // if edit kt file:
     // implementation("androidx.core:core:1.9.0") // 添加 androidx.core 的依赖项
