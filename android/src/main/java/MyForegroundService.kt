@@ -22,8 +22,13 @@ class MyForegroundService : Service() {
       notifyContent: String? = "常驻通知以保证后台运行"
   ) {
     Log.d(TAG, "startService $notifyTitle $notifyContent")
-    val notificationIntent = Intent(this, MyForegroundService::class.java)
-    Log.d(TAG, "notificationIntent: $notificationIntent")
+    var notificationIntent: Intent? = null
+    try{
+      notificationIntent = Intent(this, MyForegroundService::class.java)
+      Log.d(TAG, "notificationIntent: $notificationIntent")
+    }catch(e: Exception){
+      Log.e(TAG, "startService error: $e")
+    }
     val pendingIntent =
         PendingIntent.getActivity(
             this,
