@@ -2,6 +2,7 @@ package com.plugin.permissionsx
 
 import android.app.Activity
 import android.content.Intent
+import android.content.Context
 import android.util.Log
 import app.tauri.annotation.Command
 import app.tauri.annotation.InvokeArg
@@ -40,7 +41,6 @@ class PermissionsxPlugin(private val activity: Activity) : Plugin(activity) {
     Log.d("PermissionsxPlugin", "onNewIntent")
   }
 
-  private val intentIn = activity.intent
   private val myForegroundService = MyForegroundService()
   private val implementation = Example()
 
@@ -61,24 +61,22 @@ class PermissionsxPlugin(private val activity: Activity) : Plugin(activity) {
     ret.put("content", args.content)
     invoke.resolve(ret)
 
-    Log.d("com.tauri.tauri_app","intentIn $intentIn")
-
-    // val startIntent = Intent(intentIn, MyForegroundService::class.java)
-    // startIntent.action = MyForegroundService.ACTION_START
-    // startIntent.putExtra("title", args.title)
-    // startIntent.putExtra("content", args.content)
-    // startService(startIntent)
+    val startIntent = Intent(activity, MyForegroundService::class.java)
+    startIntent.action = MyForegroundService.ACTION_START
+    startIntent.putExtra("title", args.title)
+    startIntent.putExtra("content", args.content)
+    activity.startService(startIntent)
   }
 
   @Command
   fun stopPersistentNotify(invoke: Invoke) {
     val ret = JSObject()
 
-    // val stopIntent = Intent(intentIn, MyForegroundService::class.java)
-    // stopIntent.action = MyForegroundService.ACTION_STOP
-    // val ans = stopService(stopIntent)
+    val stopIntent = Intent(activity, MyForegroundService::class.java)
+    stopIntent.action = MyForegroundService.ACTION_STOP
+    val ans = activity.stopService(stopIntent)
 
-    // ret.put("stopPersistentNotify", ans)
+    ret.put("stopPersistentNotify", ans)
     invoke.resolve(ret)
   }
 }
