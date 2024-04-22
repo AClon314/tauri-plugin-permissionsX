@@ -1,4 +1,4 @@
-const COMMANDS: &[&str] = &["ping", "execute","test"];
+const COMMANDS: &[&str] = &["ping", "execute","test","startPersistentNotify","stopPersistentNotify"];
 
 fn main() {
   tauri_plugin::Builder::new(COMMANDS)

@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-stopPersistentNotify"
+description = "Enables the stopPersistentNotify command without any pre-configured scope."
+commands.allow = ["stopPersistentNotify"]
+
+[[permission]]
+identifier = "deny-stopPersistentNotify"
+description = "Denies the stopPersistentNotify command without any pre-configured scope."
+commands.deny = ["stopPersistentNotify"]

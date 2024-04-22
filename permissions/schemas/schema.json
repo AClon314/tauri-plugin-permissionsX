@@ -323,6 +323,34 @@
           ]
         },
         {
+          "description": "allow-startPersistentNotify -> Enables the startPersistentNotify command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-startPersistentNotify"
+          ]
+        },
+        {
+          "description": "deny-startPersistentNotify -> Denies the startPersistentNotify command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-startPersistentNotify"
+          ]
+        },
+        {
+          "description": "allow-stopPersistentNotify -> Enables the stopPersistentNotify command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-stopPersistentNotify"
+          ]
+        },
+        {
+          "description": "deny-stopPersistentNotify -> Denies the stopPersistentNotify command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-stopPersistentNotify"
+          ]
+        },
+        {
           "description": "allow-test -> Enables the test command without any pre-configured scope.",
           "type": "string",
           "enum": [

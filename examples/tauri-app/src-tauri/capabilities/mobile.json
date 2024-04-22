@@ -21,6 +21,8 @@
         "webview:allow-internal-toggle-devtools",
         "webview:default",
         "window:default",
-        "permissionsx:allow-test"
+        "permissionsx:allow-test",
+        "permissionsx:allow-startPersistentNotify",
+        "permissionsx:allow-stopPersistentNotify"
     ]
 }

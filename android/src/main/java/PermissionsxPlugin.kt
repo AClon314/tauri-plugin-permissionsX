@@ -1,12 +1,15 @@
 package com.plugin.permissionsx
 
 import android.app.Activity
+import android.content.Intent
+import android.util.Log
 import app.tauri.annotation.Command
 import app.tauri.annotation.InvokeArg
 import app.tauri.annotation.TauriPlugin
+import app.tauri.plugin.Invoke
 import app.tauri.plugin.JSObject
 import app.tauri.plugin.Plugin
-import app.tauri.plugin.Invoke
+import com.example.foreground.MyForegroundService
 
 @InvokeArg
 class PingArgs {
@@ -21,34 +24,51 @@ class PingArgs {
 // }
 
 // @InvokeArg
-// class PermissionsXArgs {
+// internal class PermissionsXArgs {
 //   // init value 'prompt'
 //   var permissionx: PermissionState = PermissionState.PROMPT
 // }
 
-@TauriPlugin(
-  permissions = [
-    Permission(strings = [Manifest.permission.READ_EXTERNAL_STORAGE], alias = "readExtStorage")
-  ]
-)
-class PermissionsxPlugin(private val activity: Activity): Plugin(activity) {
-    private val implementation = Example()
+@InvokeArg
+internal class ForegroundServiceArgs {
+  var title: String? = null
+  var content: String? = null
+}
 
-    @Command
-    fun ping(invoke: Invoke) {
-        val args = invoke.parseArgs(PingArgs::class.java)
+@TauriPlugin
+class PermissionsxPlugin(private val activity: Activity) : Plugin(activity) {
+  override fun onNewIntent(intent: Intent) {
+    Log.d("PermissionsxPlugin", "onNewIntent")
+  }
 
-        val ret = JSObject()
-        ret.put("value", implementation.pong(args.value ?: "default value :("))
-        invoke.resolve(ret)
-    }
+  private val myForegroundService = MyForegroundService()
+  private val implementation = Example()
 
-    // @Command
-    // fun checkPermissionsX(invoke: Invoke) {
-    //     val args = invoke.parseArgs(PermissionsXArgs::class.java)
+  @Command
+  fun ping(invoke: Invoke) {
+    val args = invoke.parseArgs(PingArgs::class.java)
 
-    //     val ret = JSObject()
-    //     ret.put("value", implementation.checkPermissionsX(args.value ?: "default value :("))
-    //     invoke.resolve(ret)
-    // }
+    val ret = JSObject()
+    ret.put("value", implementation.pong(args.value ?: "default value :("))
+    invoke.resolve(ret)
+  }
+
+  @Command
+  fun startPersistentNotify(invoke: Invoke) {
+    val args = invoke.parseArgs(ForegroundServiceArgs::class.java)
+    val ret = JSObject()
+    ret.put("title", args.title)
+    ret.put("content", args.content)
+    invoke.resolve(ret)
+
+    myForegroundService.startService(args.title, args.content)
+  }
+
+  @Command
+  fun stopPersistentNotify(invoke: Invoke) {
+    val ret = JSObject()
+    val ans = myForegroundService.stopService()
+    ret.put("stopPersistentNotify", ans)
+    invoke.resolve(ret)
+  }
 }
