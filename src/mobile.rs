@@ -3,7 +3,6 @@ use tauri::{
     plugin::{PluginApi, PluginHandle},
     AppHandle, Runtime,
 };
-use serde::{Deserialize, Serialize};
 
 use crate::models::*;
 

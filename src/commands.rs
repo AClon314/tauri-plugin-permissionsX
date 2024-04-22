@@ -1,4 +1,4 @@
-use tauri::{command, ipc::Channel, AppHandle, Runtime, State, Window};
+use tauri::{command, AppHandle, Runtime, State, Window};
 
 use crate::{PermissionsX, Result};
 

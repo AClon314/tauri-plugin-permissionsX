@@ -16,7 +16,7 @@ open class BuildTask : DefaultTask() {
 
     @TaskAction
     fun assemble() {
-        val executable = """d:\Program Files\nodejs\node.exe""";
+        val executable = """C:\Users\Administrator\.bun\bin\bun.exe""";
         try {
             runTauriCli(executable)
         } catch (e: Exception) {
