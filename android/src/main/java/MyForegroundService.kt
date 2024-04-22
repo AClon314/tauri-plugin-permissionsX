@@ -1,4 +1,4 @@
-package com.example.foreground
+package com.plugin.permissionsx
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -9,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
-import com.plugin.permissionsx.PermissionsxPlugin
 
 class MyForegroundService : Service() {
   companion object {
@@ -23,7 +22,8 @@ class MyForegroundService : Service() {
       notifyContent: String? = "常驻通知以保证后台运行"
   ) {
     Log.d(TAG, "startService")
-    val notificationIntent = Intent(this, PermissionsxPlugin::class.java)
+    val notificationIntent = Intent(this, MyForegroundService::class.java)
+    Log.d(TAG, "notificationIntent: $notificationIntent")
     val pendingIntent =
         PendingIntent.getActivity(
             this,

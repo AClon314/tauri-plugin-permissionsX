@@ -9,7 +9,7 @@ import app.tauri.annotation.TauriPlugin
 import app.tauri.plugin.Invoke
 import app.tauri.plugin.JSObject
 import app.tauri.plugin.Plugin
-import com.example.foreground.MyForegroundService
+import com.plugin.permissionsx.MyForegroundService
 
 @InvokeArg
 class PingArgs {
