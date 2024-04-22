@@ -21,22 +21,22 @@ pub(crate) async fn test<R: Runtime>(
     Ok(msg)
 }
 
-#[command]
-pub(crate) async fn startPersistentNotify<R: Runtime>(
-    _app: AppHandle<R>,
-    _window: Window<R>,
-    persist_notify: State<'_, PermissionsX<R>>,
-    // options: crate::PersistNotifyRequest,
-    title: Option<String>,
-    content: Option<String>,
-) -> Result<String> {
-    persist_notify.start_persistent_notify(crate::PersistNotifyRequest {title:title, content:content})
-}
+// #[command]
+// pub(crate) async fn startPersistentNotify<R: Runtime>(
+//     _app: AppHandle<R>,
+//     _window: Window<R>,
+//     persist_notify: State<'_, PermissionsX<R>>,
+//     // options: crate::PersistNotifyRequest,
+//     title: Option<String>,
+//     content: Option<String>,
+// ) -> Result<String> {
+//     persist_notify.start_persistent_notify(crate::PersistNotifyRequest {title:title, content:content})
+// }
 
-#[command]
-pub(crate) async fn stopPersistentNotify<R: Runtime>(
-    _app: AppHandle<R>,
-    persist_notify: State<'_, PermissionsX<R>>,
-) -> Result<String> {
-    persist_notify.stop_persistent_notify()
-}
+// #[command]
+// pub(crate) async fn stopPersistentNotify<R: Runtime>(
+//     _app: AppHandle<R>,
+//     persist_notify: State<'_, PermissionsX<R>>,
+// ) -> Result<String> {
+//     persist_notify.stop_persistent_notify()
+// }

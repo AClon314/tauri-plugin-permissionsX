@@ -42,8 +42,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("permissionsx")
         .invoke_handler(tauri::generate_handler![
             commands::test,
-            commands::startPersistentNotify,
-            commands::stopPersistentNotify,
+            // commands::startPersistentNotify,
+            // commands::stopPersistentNotify,
         ])
         .setup(|app, api| {
             #[cfg(mobile)]

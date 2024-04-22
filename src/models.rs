@@ -13,7 +13,7 @@ pub struct PingResponse {
 }
 
 // added
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PersistNotifyRequest {
     pub title: Option<String>,
