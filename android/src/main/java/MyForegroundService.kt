@@ -10,23 +10,28 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 
+const val DEFAULT_CHANNEL_DESCRIPTION = "My Tauri Foreground Service Channel"
+
 class MyForegroundService : Service() {
+  
+  private var notifyTitle: String? = null
+  private var notifyContent: String? = null
+  private var channelDescription: String = DEFAULT_CHANNEL_DESCRIPTION
+  private var className: String = "com.tauri.tauri_app.MainActivity"
+
   companion object {
     private val TAG = MyForegroundService::class.java.simpleName
     const val ACTION_START = "ACTION_START"
     const val ACTION_STOP = "ACTION_STOP"
   }
 
-  fun startService(
-      notifyTitle: String? = "MyForegroundService's notifyTitle",
-      notifyContent: String? = "常驻通知以保证后台运行"
-  ) {
+  fun startService() {
     Log.d(TAG, "startService $notifyTitle $notifyContent")
     var notificationIntent: Intent? = null
-    try{
-      notificationIntent = Intent(this, MyForegroundService::class.java)
+    try {
+      notificationIntent = Intent(this, Class.forName(className))
       Log.d(TAG, "notificationIntent: $notificationIntent")
-    }catch(e: Exception){
+    } catch (e: Exception) {
       Log.e(TAG, "startService error: $e")
     }
     val pendingIntent =
@@ -36,16 +41,16 @@ class MyForegroundService : Service() {
             notificationIntent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
-    val channelId = "MyForegroundServiceChannel"
+    val channelId = "MyTauriForegroundServiceChannel"
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
       val channel =
           NotificationChannel(
               channelId,
-              "My Tauri Foreground Service Channel",
+              channelDescription,
               NotificationManager.IMPORTANCE_DEFAULT
           )
       channel.setShowBadge(false)
-      channel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+      channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
       val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
       manager.createNotificationChannel(channel)
     }
@@ -57,14 +62,17 @@ class MyForegroundService : Service() {
             }
             .setContentTitle(notifyTitle)
             .setContentText(notifyContent)
-            // .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(android.R.drawable.ic_media_play)
             .setContentIntent(pendingIntent)
             .build()
     startForeground(1, notification)
+    Log.d(TAG, "startForeground FULLY SUCCESS 🎉")
   }
 
   fun stopService(): Boolean {
     Log.d(TAG, "stopService")
+    notifyTitle = null
+    notifyContent = null
     try {
       stopForeground(true)
       stopSelf()
@@ -75,7 +83,11 @@ class MyForegroundService : Service() {
   }
 
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-    Log.d(TAG, "callIntent")
+    Log.d(TAG, "callIntent $intent $flags $startId")
+    notifyTitle = intent?.getStringExtra("title")?: "notifyTitle为空"
+    notifyContent = intent?.getStringExtra("content")?: "notifyContent为空"
+    channelDescription = intent?.getStringExtra("channelDescription") ?: DEFAULT_CHANNEL_DESCRIPTION
+    className = intent?.getStringExtra("className") ?: "com.tauri.tauri_app.MainActivity"
     when (intent?.action) {
       ACTION_START -> startService()
       ACTION_STOP -> stopService()

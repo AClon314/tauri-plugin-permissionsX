@@ -65,6 +65,8 @@ class PermissionsxPlugin(private val activity: Activity) : Plugin(activity) {
     startIntent.action = MyForegroundService.ACTION_START
     startIntent.putExtra("title", args.title)
     startIntent.putExtra("content", args.content)
+    startIntent.putExtra("channelDescription", "Tauri音乐播放通知")
+    startIntent.putExtra("className", activity.javaClass.name)
     activity.startService(startIntent)
   }
 
