@@ -9,6 +9,7 @@ export async function test(msg?: string) {
 }
 
 export async function startPersistentNotify(title?: string, content?: string): Promise<void> {
+  console.log("startPersistentNotify")
   return await invoke("plugin:permissionsx|startPersistentNotify", {
     title: title,
     content: content,

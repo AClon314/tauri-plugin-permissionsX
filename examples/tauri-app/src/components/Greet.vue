@@ -16,7 +16,7 @@ async function greet() {
 }
 
 async function start(){
-  console.log(await invoke('plugin:permissionsx|startPersistentNotify',{title: "测试",content: name.value}));
+  console.log(await invoke('plugin:permissionsx|startPersistentNotify',{title: "测试2",content: name.value}));
 }
 async function stop(){
   console.log(await invoke('plugin:permissionsx|stopPersistentNotify'));
