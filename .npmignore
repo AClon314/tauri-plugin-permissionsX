@@ -1,0 +1,12 @@
+node_modules/
+examples/
+android/
+.github/
+permissions/
+src/
+
+*.rs
+*.toml
+*.md
+*.yaml
+.gitignore
